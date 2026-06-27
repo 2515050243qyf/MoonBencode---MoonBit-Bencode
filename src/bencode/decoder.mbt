@@ -80,12 +80,48 @@ fn Decoder::parse_string(self: Decoder) -> BValue raise DecodeError {
   BStr(Bytes::from_array(arr))
 }
 
+fn Decoder::parse_list(self: Decoder) -> BValue raise DecodeError {
+  self.advance() // skip 'l'
+  let list : Array[BValue] = []
+  while true {
+    let b = self.peek()
+    if b == b'e' {
+      self.advance()
+      break
+    }
+    let val = self.parse_value()
+    list.push(val)
+  }
+  BList(list)
+}
+
+fn Decoder::parse_dict(self: Decoder) -> BValue raise DecodeError {
+  self.advance() // skip 'd'
+  let dict : Array[(Bytes, BValue)] = []
+  while true {
+    let b = self.peek()
+    if b == b'e' {
+      self.advance()
+      break
+    }
+    let key_val = self.parse_string()
+    match key_val {
+      BStr(key) => {
+        let val = self.parse_value()
+        dict.push((key, val))
+      }
+      _ => raise InvalidFormat("Dict key must be a string")
+    }
+  }
+  BDict(dict)
+}
+
 fn Decoder::parse_value(self: Decoder) -> BValue raise DecodeError {
   let b = self.peek()
   match b {
     b'i' => self.parse_int()
-    b'l' => raise InvalidFormat("List not implemented")
-    b'd' => raise InvalidFormat("Dict not implemented")
+    b'l' => self.parse_list()
+    b'd' => self.parse_dict()
     b'0'..=b'9' => self.parse_string()
     _ => raise InvalidFormat("Invalid bencode value start")
   }
