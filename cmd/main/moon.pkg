@@ -1,0 +1,7 @@
+// import {
+//   "caassien/moon_bencode" @lib,
+// }
+
+options(
+  "is-main": true,
+)
