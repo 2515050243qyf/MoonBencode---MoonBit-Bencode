@@ -33,3 +33,23 @@ test "decode_nested" {
   let val = decode(b"ld3:bar4:spamei42ee")
   assert_eq(val, BValue::BList([BValue::BDict([(b"bar", BValue::BStr(b"spam"))]), BValue::BInt(42L)]))
 }
+
+test "decode_malformed_errors" {
+  let mut err = false
+  try {
+    let _ = decode(b"i42") // missing 'e'
+  } catch {
+    DecodeError::UnexpectedEOF => err = true
+    _ => ()
+  }
+  assert_eq(err, true)
+
+  let mut err2 = false
+  try {
+    let _ = decode(b"di42e4:spame") // dict key must be string
+  } catch {
+    DecodeError::InvalidFormat(_) => err2 = true
+    _ => ()
+  }
+  assert_eq(err2, true)
+}
