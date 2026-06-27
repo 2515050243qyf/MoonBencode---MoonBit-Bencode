@@ -1,0 +1,6 @@
+name = "qyf795201/moon_bencode"
+version = "0.1.0"
+readme = "README.md"
+license = "Apache-2.0"
+keywords = ["bencode", "parser", "serialization", "bittorrent"]
+description = "A fast and compliant Bencode encoder and decoder for MoonBit."
