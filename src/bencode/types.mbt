@@ -2,7 +2,7 @@ pub enum BValue {
   BInt(Int64)
   BStr(Bytes)
   BList(Array[BValue])
-  BDict(Array[(String, BValue)])
+  BDict(Array[(Bytes, BValue)])
 } derive(Eq, Debug)
 
 pub suberror DecodeError {
