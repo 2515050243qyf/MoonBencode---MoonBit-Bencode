@@ -18,3 +18,11 @@ test "encode_dict" {
   assert_eq(encode(BValue::BDict([(b"bar", BValue::BStr(b"spam")), (b"foo", BValue::BInt(42L))])), b"d3:bar4:spam3:fooi42ee")
   assert_eq(encode(BValue::BDict([])), b"de")
 }
+
+test "encode_nested" {
+  let val = BValue::BList([
+    BValue::BDict([(b"key", BValue::BList([BValue::BInt(1L), BValue::BInt(2L)]))]),
+    BValue::BStr(b"value")
+  ])
+  assert_eq(encode(val), b"ld3:keyli1ei2eee5:valuee")
+}
