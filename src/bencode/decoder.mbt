@@ -1,12 +1,16 @@
+/// Decoder is a stateful cursor over a byte array used for parsing Bencode data.
 priv struct Decoder {
   bytes: Bytes
   mut pos: Int
 }
 
+/// Creates a new decoder instance initialized at the beginning of the byte array.
 fn Decoder::new(bytes: Bytes) -> Decoder {
   { bytes, pos: 0 }
 }
 
+/// Peeks at the current byte without advancing the cursor.
+/// Raises UnexpectedEOF if the cursor is at or past the end of the byte array.
 fn Decoder::peek(self: Decoder) -> Byte raise DecodeError {
   if self.pos >= self.bytes.length() {
     raise UnexpectedEOF
@@ -14,14 +18,23 @@ fn Decoder::peek(self: Decoder) -> Byte raise DecodeError {
   self.bytes[self.pos]
 }
 
+/// Advances the cursor by one byte.
 fn Decoder::advance(self: Decoder) -> Unit {
   self.pos += 1
 }
 
-fn Decoder::read_byte(self: Decoder) -> Byte raise DecodeError {
-  let b = self.peek()
-  self.advance()
-  b
+/// Decodes a Bencode encoded byte array into a BValue AST.
+/// Raises a DecodeError if the format is invalid or if there are trailing bytes.
+pub fn decode(bytes: Bytes) -> BValue raise DecodeError {
+  if bytes.length() == 0 {
+    raise UnexpectedEOF
+  }
+  let decoder = Decoder::new(bytes)
+  let val = decoder.parse_value()
+  if decoder.pos < decoder.bytes.length() {
+    raise InvalidFormat("Trailing garbage after valid bencode")
+  }
+  val
 }
 
 fn Decoder::parse_int(self: Decoder) -> BValue raise DecodeError {
@@ -127,14 +140,4 @@ fn Decoder::parse_value(self: Decoder) -> BValue raise DecodeError {
   }
 }
 
-pub fn decode(bytes: Bytes) -> BValue raise DecodeError {
-  if bytes.length() == 0 {
-    raise UnexpectedEOF
-  }
-  let decoder = Decoder::new(bytes)
-  let val = decoder.parse_value()
-  if decoder.pos < decoder.bytes.length() {
-    raise InvalidFormat("Trailing garbage after valid bencode")
-  }
-  val
-}
+
