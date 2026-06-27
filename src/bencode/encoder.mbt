@@ -1,15 +1,20 @@
+/// Encoder is a fast, array-backed buffer for Bencode serialization.
+/// By writing directly into an Array[Byte], we avoid costly string concatenations.
 priv struct Encoder {
   arr: Array[Byte]
 }
 
+/// Creates a new encoder with an empty byte array.
 fn Encoder::new() -> Encoder {
   { arr: [] }
 }
 
+/// Writes a single byte to the output buffer.
 fn Encoder::write_byte(self: Encoder, b: Byte) -> Unit {
   self.arr.push(b)
 }
 
+/// Writes multiple bytes sequentially to the output buffer.
 fn Encoder::write_bytes(self: Encoder, bytes: Bytes) -> Unit {
   for i = 0; i < bytes.length(); i = i + 1 {
     self.arr.push(bytes[i])
@@ -53,6 +58,8 @@ fn Encoder::encode_value(self: Encoder, val: BValue) -> Unit {
   }
 }
 
+/// Encodes a BValue AST into a standard Bencode Bytes stream.
+/// Returns a byte-for-byte exact representation suitable for hashing.
 pub fn encode(val: BValue) -> Bytes {
   let encoder = Encoder::new()
   encoder.encode_value(val)
