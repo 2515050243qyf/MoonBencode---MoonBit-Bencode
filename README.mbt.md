@@ -49,4 +49,4 @@ The AST represents standard Bencode types using MoonBit Enums:
 
 ## License
 
-MIT
+Apache-2.0
