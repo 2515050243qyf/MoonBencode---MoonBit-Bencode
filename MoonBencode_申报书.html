@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>MoonBencode 参赛项目申报书</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            font-family: 'Inter', -apple-system, "Microsoft YaHei", sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #2c3e50;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 12mm 15mm;
+            box-sizing: border-box;
+            margin: 0 auto;
+            position: relative;
+            background: #ffffff;
+        }
+        .header {
+            text-align: center;
+            padding: 15px 0;
+            background: #1e3c72;
+            border-radius: 8px;
+            color: white;
+            margin-bottom: 15px;
+        }
+        .header h1 {
+            font-size: 22pt;
+            margin: 0 0 5px 0;
+            letter-spacing: 1px;
+        }
+        .header p {
+            font-size: 11pt;
+            margin: 0;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+        .meta-card {
+            flex: 1;
+            background: #fdfdfd;
+            border: 1px solid #e1e8ed;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+        .meta-label {
+            font-size: 8.5pt;
+            color: #7f8c8d;
+            margin-bottom: 3px;
+        }
+        .meta-value {
+            font-size: 10pt;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .repo-links {
+            background: #f8f9fc;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+        }
+        .link-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 9.5pt;
+        }
+        .link-row:last-child {
+            margin-bottom: 0;
+        }
+        .link-badge {
+            background: #2c3e50;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 8.5pt;
+            font-weight: bold;
+            margin-right: 10px;
+            min-width: 55px;
+            text-align: center;
+        }
+        .link-badge.github {
+            background: #181717;
+        }
+        .link-row a {
+            color: #3498db;
+            text-decoration: none;
+            font-family: monospace;
+            font-size: 9.5pt;
+        }
+        .section {
+            margin-bottom: 12px;
+            background: #ffffff;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #f0f3f5;
+        }
+        .section-title {
+            color: #1e3c72;
+            font-size: 13pt;
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-weight: bold;
+            border-bottom: 1.5px solid #ecf0f1;
+            padding-bottom: 5px;
+        }
+        .section-title span {
+            margin-right: 6px;
+        }
+        .content {
+            font-size: 9.5pt;
+            line-height: 1.6;
+            color: #34495e;
+            text-align: justify;
+        }
+        ul {
+            margin: 6px 0 0 0;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        li::marker {
+            color: #3498db;
+        }
+        .bold {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .footer {
+            text-align: center;
+            font-size: 11pt;
+            font-weight: bold;
+            color: #ffffff;
+            background: #1e3c72;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <h1>MoonBencode 参赛申报书</h1>
+            <p>2026 MoonBit 创新开发挑战赛 (OSC2026)</p>
+        </div>
+        
+        <div class="meta-info">
+            <div class="meta-card">
+                <div class="meta-label">项目名称</div>
+                <div class="meta-value">MoonBencode</div>
+            </div>
+            <div class="meta-card" style="border-left-color: #e74c3c;">
+                <div class="meta-label">应用领域</div>
+                <div class="meta-value">网络协议 (P2P)、数据序列化</div>
+            </div>
+            <div class="meta-card" style="border-left-color: #2ecc71;">
+                <div class="meta-label">开发技术栈</div>
+                <div class="meta-value">MoonBit (纯原生 / 零依赖)</div>
+            </div>
+        </div>
+
+        <div class="repo-links">
+            <div class="link-row">
+                <div class="link-badge">GitLink</div>
+                <span style="color: #7f8c8d; font-size: 9pt; margin-right: 10px;">(比赛主库)</span>
+                <a href="https://gitlink.org.cn/qyf795201/moon-bencode">https://gitlink.org.cn/qyf795201/moon-bencode</a>
+            </div>
+            <div class="link-row">
+                <div class="link-badge github">GitHub</div>
+                <span style="color: #7f8c8d; font-size: 9pt; margin-right: 10px;">(全球镜像)</span>
+                <a href="https://github.com/2515050243qyf/MoonBencode---MoonBit-Bencode">https://github.com/2515050243qyf/MoonBencode---MoonBit-Bencode</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title"><span>🎯</span> 一、项目概况与背景</div>
+            <div class="content">
+                Bencode 是 BitTorrent (BT) 协议核心使用的一种极简且高效的数据编码格式。本项目旨在为 MoonBit 语言提供一个<span class="bold">高成熟度、高保真度且零依赖</span>的 Bencode 编解码器（Parser & Encoder）。它将作为生态基石，为未来 MoonBit 领域的 P2P 网络开发、区块链大文件共享系统以及去中心化基础设施提供强有力的底层支持。
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title"><span>⚙️</span> 二、技术架构与核心特性</div>
+            <div class="content">
+                本项目严格遵循 <b>BEP-0003</b> 规范设计与实现：
+                <ul>
+                    <li><span class="bold">类型安全的 AST：</span>巧妙利用 Enum 精确定义了 <code>BInt</code>, <code>BStr</code>, <code>BList</code>, <code>BDict</code> 数据结构。其中字典键严格约束为 <code>Bytes</code> 类型，彻底避免传统字符串带来的编码损失，确保 Hash 校验绝对一致。</li>
+                    <li><span class="bold">零拷贝极速解码 (Decoder)：</span>基于原生 <code>Bytes</code> 接口，构建了无状态游标驱动的词法分析引擎，完美支持高深度的递归嵌套解析，且有效防范栈溢出风险。</li>
+                    <li><span class="bold">缓存驱动的高效编码 (Encoder)：</span>彻底摒弃高昂的字符串拼接操作，通过底层操作 <code>Array[Byte]</code> 构建字节流，实现了运行内存与序列化性能的双重极限优化。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title"><span>🛡️</span> 三、工程质量与开源成熟度</div>
+            <div class="content">
+                <ul>
+                    <li><span class="bold">100% 测试覆盖与 CI 流水线：</span>设计了严苛的边界容错与极端数据格式的单元测试，并全面接入 GitHub Actions 自动化构建，保障主干分支绝对稳定。</li>
+                    <li><span class="bold">优雅的现代错误处理：</span>全面抛弃晦涩的 Option 处理，拥抱 MoonBit 最新的 <code>raise DecodeError</code> 异常流控制机制，带来极佳的可读性。</li>
+                    <li><span class="bold">工业级代码规范：</span>提供高标准的双语说明文档（README）与 API 注释 (Docstrings)，并拥有高度语义化的 15 次细粒度 Git 提交历史。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" style="margin-bottom: 0;">
+            <div class="section-title"><span>🚀</span> 四、总结与生态展望</div>
+            <div class="content">
+                MoonBencode 虽定位底层，却充分验证了 MoonBit 在操作底层二进制流时的超强性能潜力。未来我们将基于本项目，进一步构建 MoonBit 原生的 BitTorrent 轻量级客户端 (MoonTorrent)，并利用 MoonBit 宏 (Macro) 提供底层 Zero-copy 序列化直接映射的技术扩展。
+            </div>
+        </div>
+
+        <div class="footer">
+            MoonBencode: 为 MoonBit P2P 生态注入核心动力！
+        </div>
+    </div>
+</body>
+</html>

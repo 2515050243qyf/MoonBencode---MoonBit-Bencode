@@ -49,4 +49,4 @@ pub fn main {
 
 ## 开源协议
 
-MIT
+Apache-2.0
