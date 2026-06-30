@@ -16,7 +16,7 @@ Add the library to your `moon.pkg.json`:
 ```json
 {
   "deps": {
-    "qyf795201/moon_bencode": "0.1.0"
+    "qyf795201/moon_bencode": "1.0.0"
   }
 }
 ```
