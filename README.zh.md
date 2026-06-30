@@ -16,7 +16,7 @@ MoonBencode 是一个高性能且成熟的 Bencode 序列化与反序列化库�
 ```json
 {
   "deps": {
-    "qyf795201/moon_bencode": "0.1.0"
+    "qyf795201/moon_bencode": "1.0.0"
   }
 }
 ```

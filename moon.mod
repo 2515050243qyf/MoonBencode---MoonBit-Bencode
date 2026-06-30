@@ -1,5 +1,5 @@
 name = "qyf795201/moon_bencode"
-version = "0.1.0"
+version = "1.0.0"
 readme = "README.md"
 license = "Apache-2.0"
 keywords = ["bencode", "parser", "serialization", "bittorrent"]
