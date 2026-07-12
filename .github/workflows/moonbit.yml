@@ -8,17 +8,25 @@ on:
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       
-      - name: Install MoonBit CLI
-        run: |
-          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
-          echo "$HOME/.moon/bin" >> $GITHUB_PATH
+      - name: Setup MoonBit
+        uses: hustcer/setup-moonbit@v1
           
       - name: MoonBit Check
-        run: moon check
+        run: moon check --deny-warn
+        
+      - name: MoonBit Format Check
+        run: moon fmt --check
+
+      - name: MoonBit Info Check
+        run: moon info
         
       - name: MoonBit Test
-        run: moon test
+        run: moon test --deny-warn
+

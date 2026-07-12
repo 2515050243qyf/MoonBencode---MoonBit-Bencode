@@ -16,7 +16,7 @@ MoonBencode 是一个高性能且成熟的 Bencode 序列化与反序列化库�
 ```json
 {
   "deps": {
-    "qyf795201/moon_bencode": "1.0.0"
+    "2515050243qyf/moon_bencode": "0.1.1"
   }
 }
 ```
@@ -24,17 +24,17 @@ MoonBencode 是一个高性能且成熟的 Bencode 序列化与反序列化库�
 ## 快速使用
 
 ```moonbit
-import "qyf795201/moon_bencode/src/bencode"
+import "2515050243qyf/moon_bencode/src/bencode"
 
-pub fn main {
+pub fn main raise {
   // 解码 Bencode 字符串
-  let val = bencode::decode(b"d3:bar4:spam3:fooi42ee")!
-  println(val) 
+  let val = bencode::decode(b"d3:bar4:spam3:fooi42ee")
+  println("Decoded: \{val}") 
   // 输出: BDict([(b"bar", BStr(b"spam")), (b"foo", BInt(42))])
   
-  // 将 AST 重新编码为 Bytes 字节流
+  // 编码回 Bytes
   let bytes = bencode::encode(val)
-  println(bytes) 
+  println("Encoded: \{bytes}") 
   // 输出: b"d3:bar4:spam3:fooi42ee"
 }
 ```

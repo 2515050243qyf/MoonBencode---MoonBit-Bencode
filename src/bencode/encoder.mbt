@@ -1,33 +1,39 @@
+///|
 /// Encoder is a fast, array-backed buffer for Bencode serialization.
 /// By writing directly into an Array[Byte], we avoid costly string concatenations.
 priv struct Encoder {
-  arr: Array[Byte]
+  arr : Array[Byte]
 }
 
+///|
 /// Creates a new encoder with an empty byte array.
 fn Encoder::new() -> Encoder {
   { arr: [] }
 }
 
+///|
 /// Writes a single byte to the output buffer.
-fn Encoder::write_byte(self: Encoder, b: Byte) -> Unit {
+fn Encoder::write_byte(self : Encoder, b : Byte) -> Unit {
   self.arr.push(b)
 }
 
+///|
 /// Writes multiple bytes sequentially to the output buffer.
-fn Encoder::write_bytes(self: Encoder, bytes: Bytes) -> Unit {
+fn Encoder::write_bytes(self : Encoder, bytes : Bytes) -> Unit {
   for i = 0; i < bytes.length(); i = i + 1 {
     self.arr.push(bytes[i])
   }
 }
 
-fn Encoder::write_string_ascii(self: Encoder, s: String) -> Unit {
+///|
+fn Encoder::write_string_ascii(self : Encoder, s : String) -> Unit {
   for i = 0; i < s.length(); i = i + 1 {
     self.write_byte(s[i].to_int().to_byte())
   }
 }
 
-fn Encoder::encode_value(self: Encoder, val: BValue) -> Unit {
+///|
+fn Encoder::encode_value(self : Encoder, val : BValue) -> Unit {
   match val {
     BInt(i) => {
       self.write_byte(b'i')
@@ -48,8 +54,10 @@ fn Encoder::encode_value(self: Encoder, val: BValue) -> Unit {
     }
     BDict(dict) => {
       self.write_byte(b'd')
-      for i = 0; i < dict.length(); i = i + 1 {
-        let (key, v) = dict[i]
+      let sorted_dict = dict.copy()
+      sorted_dict.sort_by(fn(a, b) { bytes_compare(a.0, b.0) })
+      for i = 0; i < sorted_dict.length(); i = i + 1 {
+        let (key, v) = sorted_dict[i]
         self.encode_value(BStr(key))
         self.encode_value(v)
       }
@@ -58,10 +66,17 @@ fn Encoder::encode_value(self: Encoder, val: BValue) -> Unit {
   }
 }
 
+///|
 /// Encodes a BValue AST into a standard Bencode Bytes stream.
 /// Returns a byte-for-byte exact representation suitable for hashing.
-pub fn encode(val: BValue) -> Bytes {
+pub fn encode(val : BValue) -> Bytes {
   let encoder = Encoder::new()
   encoder.encode_value(val)
   Bytes::from_array(encoder.arr)
+}
+
+///|
+/// Encodes a BValueView AST into a standard Bencode Bytes stream.
+pub fn encode_view(val : BValueView) -> Bytes {
+  encode(val.to_bvalue())
 }

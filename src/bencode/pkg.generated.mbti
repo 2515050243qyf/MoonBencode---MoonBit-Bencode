@@ -1,0 +1,44 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "2515050243qyf/moon_bencode/src/bencode"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn decode(Bytes) -> BValue raise DecodeError
+
+pub fn decode_view(Bytes) -> BValueView raise DecodeError
+
+pub fn encode(BValue) -> Bytes
+
+pub fn encode_view(BValueView) -> Bytes
+
+// Errors
+pub suberror DecodeError {
+  InvalidFormat(String)
+  UnexpectedEOF
+} derive(Eq, @debug.Debug)
+
+// Types and methods
+pub(all) enum BValue {
+  BInt(Int64)
+  BStr(Bytes)
+  BList(Array[BValue])
+  BDict(Array[(Bytes, BValue)])
+} derive(Eq, @debug.Debug)
+pub impl Show for BValue
+
+pub(all) enum BValueView {
+  BInt(Int64)
+  BStr(BytesView)
+  BList(Array[BValueView])
+  BDict(Array[(BytesView, BValueView)])
+} derive(Eq, @debug.Debug)
+pub fn BValueView::to_bvalue(Self) -> BValue
+pub impl Show for BValueView
+
+// Type aliases
+
+// Traits
+

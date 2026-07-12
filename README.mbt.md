@@ -16,25 +16,25 @@ Add the library to your `moon.pkg.json`:
 ```json
 {
   "deps": {
-    "qyf795201/moon_bencode": "1.0.0"
+    "2515050243qyf/moon_bencode": "0.1.1"
   }
 }
 ```
 
 ## Quick Start
 
-```moonbit
-import "qyf795201/moon_bencode/src/bencode"
+```moonbit nocheck
+import "2515050243qyf/moon_bencode/src/bencode"
 
-pub fn main {
+pub fn main raise {
   // Decode a Bencode string
-  let val = bencode::decode(b"d3:bar4:spam3:fooi42ee")!
-  println(val) 
+  let val = bencode::decode(b"d3:bar4:spam3:fooi42ee")
+  println("Decoded: \{val}") 
   // Output: BDict([(b"bar", BStr(b"spam")), (b"foo", BInt(42))])
   
   // Encode it back to Bytes
   let bytes = bencode::encode(val)
-  println(bytes) 
+  println("Encoded: \{bytes}") 
   // Output: b"d3:bar4:spam3:fooi42ee"
 }
 ```

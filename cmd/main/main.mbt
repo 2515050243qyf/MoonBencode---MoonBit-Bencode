@@ -1,7 +1,10 @@
 ///|
-/// Entry point for the CLI or runnable program in this template.
-/// Keep main focused; move logic into the library package.
-/// Run with `moon run cmd/main` from the project root.
-fn main {
-  println("Hello")
+fn main raise {
+  // Decode a Bencode string
+  let val = @bencode.decode(b"d3:bar4:spam3:fooi42ee")
+  println("Decoded successfully")
+
+  // Encode it back to Bytes
+  let bytes = @bencode.encode(val)
+  println("Encoded back length: \{bytes.length()}")
 }
