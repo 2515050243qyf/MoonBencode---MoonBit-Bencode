@@ -2,6 +2,4 @@ import {
   "2515050243qyf/moon_bencode/src/bencode",
 }
 
-options(
-  "is-main": true,
-)
+pkgtype(kind: "executable")

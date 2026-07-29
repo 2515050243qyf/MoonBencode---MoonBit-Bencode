@@ -26,6 +26,9 @@ jobs:
 
       - name: MoonBit Info Check
         run: moon info
+
+      - name: MoonBit Build
+        run: moon build
         
       - name: MoonBit Test
         run: moon test --deny-warn
