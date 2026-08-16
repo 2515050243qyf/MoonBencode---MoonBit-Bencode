@@ -131,7 +131,7 @@ moon run cmd/main -- profile
 
 ## 可复现验收
 
-仓库 CI 使用 MoonBit `0.10.3`，并在 Linux、macOS、Windows 上执行。可在项目根目录运行同样的检查：
+仓库 CI 使用 MoonBit `0.10.7`，并在 Linux、macOS、Windows 上执行。可在项目根目录运行同样的检查：
 
 ```bash
 moon check --deny-warn

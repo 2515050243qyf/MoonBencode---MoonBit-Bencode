@@ -137,7 +137,7 @@ moon run cmd/main -- profile
 
 ## Reproducible validation
 
-The repository CI uses MoonBit toolchain `0.10.3` on Linux, macOS, and Windows.
+The repository CI uses MoonBit toolchain `0.10.7` on Linux, macOS, and Windows.
 Run the same checks locally from the repository root:
 
 ```bash
