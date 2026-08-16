@@ -94,7 +94,7 @@ pub fn command_can_run_without_network(command : TorrentCommand) -> Bool {
 
 ///|
 pub fn command_version() -> Bytes {
-  b"moon_bencode-cli/0.1.3"
+  b"moon_bencode-cli/0.2.0"
 }
 
 ///|

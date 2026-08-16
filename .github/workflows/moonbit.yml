@@ -44,3 +44,12 @@ jobs:
       - name: MoonBit Native Test
         run: moon test --deny-warn --target native
 
+      - name: CLI smoke tests
+        run: |
+          moon run cmd/main -- inspect
+          moon run cmd/main -- validate
+          moon run cmd/main -- files
+          moon run cmd/main -- pieces
+          moon run cmd/main -- magnet
+          moon run cmd/main -- profile
+

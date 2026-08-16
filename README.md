@@ -34,7 +34,7 @@ Or edit your project's `moon.mod` to add the dependency manually:
 
 ```json
 import {
-  "2515050243qyf/moon_bencode" = "0.1.3"
+  "2515050243qyf/moon_bencode" = "0.2.0"
 }
 ```
 
