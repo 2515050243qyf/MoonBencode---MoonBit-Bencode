@@ -25,7 +25,7 @@ moon add 2515050243qyf/moon_bencode
 
 ```json
 import {
-  "2515050243qyf/moon_bencode" = "0.1.2"
+  "2515050243qyf/moon_bencode" = "0.1.3"
 }
 ```
 
@@ -113,6 +113,32 @@ pub fn example_hash(torrent : @bencode.BValue) {
 - **执行构建**: `moon build`
 - **运行测试用例**: `moon test --deny-warn`
 - **检查格式规范**: `moon fmt --check`
+
+## 可复现验收
+
+仓库 CI 使用 MoonBit `0.10.3`，并在 Linux、macOS、Windows 上执行。可在项目根目录运行同样的检查：
+
+```bash
+moon check --deny-warn
+moon fmt --check
+moon info
+moon build
+moon test --deny-warn
+moon test --deny-warn --target native
+```
+
+`moon info` 会生成公开接口文件 `pkg.generated.mbti`。0.10.x CLI 的
+`moon info` 不支持 `--deny-warn`，因此警告检查由 `moon check --deny-warn`
+和 `moon test --deny-warn` 负责。
+
+测试覆盖严格整数与字符串校验、字典规范序与重复键、畸形输入、嵌套深度限制、
+零拷贝视图、JSON 转换、路径查询、SHA-1 `info_hash` 以及真实种子元数据样例。
+如需查看覆盖率，可运行：
+
+```bash
+moon test --deny-warn --enable-coverage
+moon coverage report -f summary
+```
 
 ## 开源协议
 

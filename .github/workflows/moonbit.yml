@@ -17,6 +17,8 @@ jobs:
       
       - name: Setup MoonBit
         uses: hustcer/setup-moonbit@v1
+        with:
+          version: "0.10.3"
           
       - name: MoonBit Check
         run: moon check --deny-warn
@@ -25,6 +27,7 @@ jobs:
         run: moon fmt --check
 
       - name: MoonBit Info Check
+        # `moon info` has no --deny-warn option in the 0.10.x CLI.
         run: moon info
 
       - name: MoonBit Build
@@ -32,4 +35,7 @@ jobs:
         
       - name: MoonBit Test
         run: moon test --deny-warn
+
+      - name: MoonBit Native Test
+        run: moon test --deny-warn --target native
 

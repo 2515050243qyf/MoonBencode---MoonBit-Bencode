@@ -33,7 +33,7 @@ Bencode 是 BitTorrent (BT) 协议核心使用的一种轻量级且极简的数�
 
 在项目开发过程中，我们秉持**高质量与成熟度**的标准，完成了如下工程实践：
 
-- **自动化测试覆盖**: 编写了大量边界条件测试 (Boundary Tests) 与集成测试，通过 `moon test` 自动化框架保证了对整数（包含负数）、字节串、列表、字典及嵌套复合结构的 100% 正确解析。
+- **自动化测试覆盖**: 编写了边界条件测试与集成测试，覆盖整数（包含负数）、字节串、列表、字典、嵌套复合结构、规范校验、JSON、路径查询和 info_hash。当前本地报告为 24 个测试全部通过、399/472 行（84.5%）覆盖率；覆盖率命令和 CI 流程已写入 README。
 - **现代化错误处理 (Modern Error Handling)**: 摒弃了传统的 Option 返回，全面拥抱 MoonBit 最新的 Error Handling 语法（`raise DecodeError`），实现了优雅的异常流控制。
 - **完善的文档支持**: 提供了中英双语的详细 `README`，使得接入 MoonBencode 变得非常容易。
 
@@ -44,7 +44,7 @@ Bencode 是 BitTorrent (BT) 协议核心使用的一种轻量级且极简的数�
 MoonBencode 虽是一个看似底层的序列化库，但它展示了 MoonBit 语言在处理底层二进制协议时的强大表达能力与性能潜力。
 **未来展望**：
 1. 我们计划基于 MoonBencode 进一步开发基于 MoonBit 的轻量级 BitTorrent 客户端 (MoonTorrent)。
-2. 提供零拷贝 (Zero-copy) 反序列化直接映射为 MoonBit `struct` 宏 (Macro) 支持。
+2. 在保持 API 稳定的前提下，继续补充更多 BitTorrent 元数据样例、错误分类和性能基准。
 
 <div align="center" style="margin-top: 30px; padding: 10px; background-color: #F8F9FA; border-radius: 8px;">
   <b>MoonBencode: 为 MoonBit Web3 与 P2P 生态注入核心动力！</b>

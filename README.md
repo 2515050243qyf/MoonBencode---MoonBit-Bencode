@@ -25,7 +25,7 @@ Or edit your project's `moon.mod` to add the dependency manually:
 
 ```json
 import {
-  "2515050243qyf/moon_bencode" = "0.1.2"
+  "2515050243qyf/moon_bencode" = "0.1.3"
 }
 ```
 
@@ -113,6 +113,34 @@ The following standard commands are available:
 - **Build project**: `moon build`
 - **Run tests**: `moon test --deny-warn`
 - **Verify code formatting**: `moon fmt --check`
+
+## Reproducible validation
+
+The repository CI uses MoonBit toolchain `0.10.3` on Linux, macOS, and Windows.
+Run the same checks locally from the repository root:
+
+```bash
+moon check --deny-warn
+moon fmt --check
+moon info
+moon build
+moon test --deny-warn
+moon test --deny-warn --target native
+```
+
+`moon info` regenerates the public interface files (`pkg.generated.mbti`).
+The 0.10.x CLI does not provide an `--deny-warn` option for `moon info`, so
+warnings are enforced by `moon check --deny-warn` and `moon test --deny-warn`.
+
+The test suite covers strict integer and string validation, canonical and
+duplicate dictionary keys, malformed input, depth limits, zero-copy views,
+JSON conversion, nested path lookup, SHA-1 `info_hash`, and a real torrent
+metadata sample. Coverage can be inspected with:
+
+```bash
+moon test --deny-warn --enable-coverage
+moon coverage report -f summary
+```
 
 ## License
 
