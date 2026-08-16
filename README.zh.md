@@ -131,7 +131,7 @@ moon run cmd/main -- profile
 
 ## 可复现验收
 
-仓库 CI 使用 Moon CLI `0.1.20260807`（编译器 `moonc 0.10.7`），并在 Linux、macOS、Windows 上执行。可在项目根目录运行同样的检查：
+仓库 CI 使用最新 Moon CLI（当前编译器 `moonc 0.10.7`），并在 Linux、macOS、Windows 上执行。可在项目根目录运行同样的检查：
 
 ```bash
 moon check --deny-warn
