@@ -23,4 +23,7 @@ jobs:
           git diff --exit-code
           moon build
           moon test --deny-warn
-          moon publish --dry-run
+      - name: Verify published Mooncakes package
+        run: |
+          status=$(curl -L -s -o /tmp/moon_bencode_mooncakes.html -w "%{http_code}" https://mooncakes.io/packages/2515050243qyf/moon_bencode)
+          test "$status" = "200"
