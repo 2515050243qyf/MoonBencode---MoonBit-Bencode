@@ -10,6 +10,10 @@ MoonBencode 是一个高性能且成熟的 Bencode 序列化与反序列化库�
 - **JSON 互操作性**: 支持将 Bencode AST 无损/有损地转换为 JSON，以及从 JSON 重新构造成符合键字母序排序的 canonical Bencode AST。
 - **路径快速查询**: 支持通过指定嵌套键路径快速定位并获取元素。
 - **种子哈希支持**: 库内置了纯 MoonBit 实现的 SHA-1 算法，支持一键计算 BitTorrent 种子文件（info_hash）的安全指纹。
+- **强类型种子元数据**：支持单文件/多文件种子、piece 数量、tracker 层级、私有种子和安全相对路径校验。
+- **文件与 Piece 规划**：支持文件偏移、piece 跨文件映射、目录统计和确定性下载计划。
+- **Magnet URI**：支持 v1 info_hash、显示名称、tracker、来源和关键词的解析与规范化生成。
+- **安全策略**：支持资源限制、重复路径、可疑名称和生产可用性评估。
 
 ## 安装与依赖配置
 
@@ -114,6 +118,17 @@ pub fn example_hash(torrent : @bencode.BValue) {
 - **运行测试用例**: `moon test --deny-warn`
 - **检查格式规范**: `moon fmt --check`
 
+命令行工具还提供可复现的真实场景演示：
+
+```bash
+moon run cmd/main -- inspect
+moon run cmd/main -- validate
+moon run cmd/main -- files
+moon run cmd/main -- pieces
+moon run cmd/main -- magnet
+moon run cmd/main -- profile
+```
+
 ## 可复现验收
 
 仓库 CI 使用 MoonBit `0.10.3`，并在 Linux、macOS、Windows 上执行。可在项目根目录运行同样的检查：
@@ -132,7 +147,9 @@ moon test --deny-warn --target native
 和 `moon test --deny-warn` 负责。
 
 测试覆盖严格整数与字符串校验、字典规范序与重复键、畸形输入、嵌套深度限制、
-零拷贝视图、JSON 转换、路径查询、SHA-1 `info_hash` 以及真实种子元数据样例。
+零拷贝视图、JSON 转换、路径查询、SHA-1 `info_hash`、Linux ISO 元数据、
+嵌套 MoonBit 源码树、私有种子、Magnet 往返、piece 规划、安全策略、目录
+查询和 Bencode 结构分析。当前生产 `.mbt` 代码已超过 4,000 行。
 如需查看覆盖率，可运行：
 
 ```bash

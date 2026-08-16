@@ -1,5 +1,7 @@
 import {
   "2515050243qyf/moon_bencode/src/bencode",
+  "moonbitlang/core/env",
+  "moonbitlang/core/encoding/utf8",
 }
 
 pkgtype(kind: "executable")

@@ -1,0 +1,26 @@
+name: MoonBit Package Check
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["v*"]
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup MoonBit 0.10.3
+        uses: hustcer/setup-moonbit@v1
+        with:
+          version: "0.10.3"
+      - name: Verify package
+        run: |
+          moon version --all
+          moon check --deny-warn
+          moon fmt --check
+          moon info
+          git diff --exit-code
+          moon build
+          moon test --deny-warn
+          moon publish --dry-run

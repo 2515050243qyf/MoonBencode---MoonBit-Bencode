@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.0
+
+- Added typed torrent metainfo validation and safe multi-file layouts.
+- Added piece planning, Magnet URI support, deterministic builders, policy
+  assessment, security reports, catalog queries, and structural profiling.
+- Added reproducible CLI workflows and a stricter three-platform acceptance CI.
+
 ## 0.1.3
 
 - Documented the complete cross-platform acceptance workflow and pinned CI

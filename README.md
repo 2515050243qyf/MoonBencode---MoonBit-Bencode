@@ -11,6 +11,15 @@ MoonBencode is a high-performance, mature Bencode serialization and deserializat
 - **Path Lookup**: Easily retrieves nested list/dictionary values by path.
 - **Torrent Info Hash**: Built-in pure MoonBit SHA-1 algorithm to calculate the `info_hash` fingerprint of a torrent file.
 
+- **Typed Torrent Metainfo**: Validates single-file and multi-file torrents,
+  canonical piece counts, private flags, tracker tiers, and safe relative paths.
+- **File and Piece Planning**: Maps files to piece spans, calculates offsets,
+  directory statistics, and produces deterministic download plans.
+- **Magnet URI**: Parses and builds normalized v1 Magnet links with display
+  names, trackers, exact sources, and keywords.
+- **Security and Policy Checks**: Applies resource limits, duplicate-path
+  detection, suspicious-name checks, and production-readiness assessments.
+
 ## Installation & Dependency Setup
 
 ### 1. Add Dependency to Project
@@ -114,6 +123,18 @@ The following standard commands are available:
 - **Run tests**: `moon test --deny-warn`
 - **Verify code formatting**: `moon fmt --check`
 
+The executable also exposes deterministic workflows over a built-in real-world
+Linux distribution fixture:
+
+```bash
+moon run cmd/main -- inspect
+moon run cmd/main -- validate
+moon run cmd/main -- files
+moon run cmd/main -- pieces
+moon run cmd/main -- magnet
+moon run cmd/main -- profile
+```
+
 ## Reproducible validation
 
 The repository CI uses MoonBit toolchain `0.10.3` on Linux, macOS, and Windows.
@@ -135,7 +156,10 @@ warnings are enforced by `moon check --deny-warn` and `moon test --deny-warn`.
 The test suite covers strict integer and string validation, canonical and
 duplicate dictionary keys, malformed input, depth limits, zero-copy views,
 JSON conversion, nested path lookup, SHA-1 `info_hash`, and a real torrent
-metadata sample. Coverage can be inspected with:
+metadata sample. It also covers Linux ISO metadata, nested MoonBit source
+trees, private torrents, Magnet round trips, piece planning, security policies,
+catalog queries, and Bencode structural profiling. Production code is above
+4,000 effective MoonBit lines. Coverage can be inspected with:
 
 ```bash
 moon test --deny-warn --enable-coverage

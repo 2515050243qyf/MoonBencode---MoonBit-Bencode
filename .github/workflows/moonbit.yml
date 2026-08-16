@@ -19,6 +19,9 @@ jobs:
         uses: hustcer/setup-moonbit@v1
         with:
           version: "0.10.3"
+
+      - name: Toolchain version
+        run: moon version --all
           
       - name: MoonBit Check
         run: moon check --deny-warn
@@ -28,7 +31,9 @@ jobs:
 
       - name: MoonBit Info Check
         # `moon info` has no --deny-warn option in the 0.10.x CLI.
-        run: moon info
+        run: |
+          moon info
+          git diff --exit-code
 
       - name: MoonBit Build
         run: moon build

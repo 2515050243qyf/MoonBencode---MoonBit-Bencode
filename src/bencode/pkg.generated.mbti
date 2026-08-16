@@ -6,6 +6,84 @@ import {
 }
 
 // Values
+pub fn add_tracker(BValue, Bytes) -> BValue
+
+pub fn all_pieces_match(Array[PieceCheck]) -> Bool
+
+pub fn bytes_checksum(Bytes) -> UInt
+
+pub fn bytes_concat(Array[Bytes]) -> Bytes
+
+pub fn bytes_contains(Bytes, Byte) -> Bool
+
+pub fn bytes_count(Bytes, Byte) -> Int
+
+pub fn bytes_equal(Bytes, Bytes) -> Bool
+
+pub fn bytes_is_empty(Bytes) -> Bool
+
+pub fn bytes_length(Bytes) -> Int
+
+pub fn bytes_pad_left(Bytes, Int, Byte) -> Bytes
+
+pub fn bytes_pad_right(Bytes, Int, Byte) -> Bytes
+
+pub fn bytes_prefix_of(Bytes, Bytes) -> Bool
+
+pub fn bytes_repeat(Byte, Int) -> Bytes
+
+pub fn bytes_reverse(Bytes) -> Bytes
+
+pub fn bytes_slice(Bytes, Int, Int) -> Bytes
+
+pub fn bytes_suffix_of(Bytes, Bytes) -> Bool
+
+pub fn bytes_xor_checksum(Bytes) -> Byte
+
+pub fn canonical_bytes(BValue) -> Bytes
+
+pub fn canonical_round_trip(BValue) -> BValue raise DecodeError
+
+pub fn canonicalize(BValue) -> BValue
+
+pub fn checks_for_file(TorrentLayout, Int, Array[PieceCheck]) -> Array[PieceCheck]
+
+pub fn clamp_int(Int, Int, Int) -> Int
+
+pub fn clamp_int64(Int64, Int64, Int64) -> Int64
+
+pub fn command_all() -> Array[TorrentCommand]
+
+pub fn command_can_run_without_network(TorrentCommand) -> Bool
+
+pub fn command_count() -> Int
+
+pub fn command_exit_code(TorrentCommand, Bool) -> Int
+
+pub fn command_help() -> Array[Bytes]
+
+pub fn command_is_analysis(TorrentCommand) -> Bool
+
+pub fn command_is_read_only(TorrentCommand) -> Bool
+
+pub fn command_is_validation(TorrentCommand) -> Bool
+
+pub fn command_name(TorrentCommand) -> Bytes
+
+pub fn command_output_kind(TorrentCommand) -> Bytes
+
+pub fn command_requires_metainfo(TorrentCommand) -> Bool
+
+pub fn command_supported(TorrentCommand) -> Bool
+
+pub fn command_version() -> Bytes
+
+pub fn compat_piece_hash_at(Bytes, Int) -> Bytes?
+
+pub fn compat_piece_hash_count(Bytes) -> Int
+
+pub fn count_suspicious_files(TorrentLayout) -> Int
+
 pub fn decode(Bytes) -> BValue raise DecodeError
 
 pub fn decode_view(Bytes) -> BValueView raise DecodeError
@@ -14,7 +92,189 @@ pub fn encode(BValue) -> Bytes
 
 pub fn encode_view(BValueView) -> Bytes
 
+pub fn expected_piece_count(Int64, Int) -> Int
+
+pub fn field_bytes(BValue, Bytes) -> Bytes?
+
+pub fn field_int(BValue, Bytes) -> Int64?
+
+pub fn file_length_is_valid(Int64) -> Bool
+
+pub fn first_mismatch(Array[PieceCheck]) -> PieceCheck?
+
+pub fn fixture_add_announce_list(BValue, Array[Bytes]) -> BValue
+
+pub fn fixture_empty_file() -> BValue
+
+pub fn fixture_file_count(BValue) -> Int raise TorrentError
+
+pub fn fixture_has_nested_paths(BValue) -> Bool raise TorrentError
+
+pub fn fixture_info_hash(BValue) -> Bytes raise TorrentError
+
+pub fn fixture_is_canonical(BValue) -> Bool
+
+pub fn fixture_is_private(BValue) -> Bool raise TorrentError
+
+pub fn fixture_linux_iso() -> BValue
+
+pub fn fixture_multi_file(Bytes, Array[TorrentFile], Int) -> BValue
+
+pub fn fixture_nested_tree() -> BValue
+
+pub fn fixture_piece_count(BValue) -> Int raise TorrentError
+
+pub fn fixture_private_tree() -> BValue raise TorrentError
+
+pub fn fixture_profile(BValue) -> BValueProfile
+
+pub fn fixture_round_trip(BValue) -> BValue raise DecodeError
+
+pub fn fixture_single_file(Bytes, Int64, Int) -> BValue
+
+pub fn fixture_source_tree() -> BValue
+
+pub fn fixture_torrent_bytes(BValue) -> Bytes
+
+pub fn fixture_with_name(BValue, Bytes) -> BValue raise TorrentError
+
+pub fn fixture_with_tracker(BValue, Bytes) -> BValue
+
+pub fn has_control_bytes(Array[Bytes]) -> Bool
+
+pub fn has_field(BValue, Bytes) -> Bool
+
+pub fn info_dictionary_bytes(BValue) -> Bytes?
+
+pub fn info_dictionary_hash(BValue) -> Bytes?
+
+pub fn is_piece_hash_blob(Bytes) -> Bool
+
+pub fn is_v1_info_hash(Bytes) -> Bool
+
+pub fn matching_piece_count(Array[PieceCheck]) -> Int
+
+pub fn metainfo_has_private_flag(BValue) -> Bool
+
+pub fn metainfo_is_canonical(BValue) -> Bool
+
+pub fn metainfo_is_multi_file(BValue) -> Bool raise TorrentError
+
+pub fn metainfo_is_round_trippable(BValue) -> Bool raise DecodeError
+
+pub fn metainfo_is_single_file(BValue) -> Bool raise TorrentError
+
+pub fn metainfo_layout(BValue) -> TorrentLayout? raise TorrentError
+
+pub fn metainfo_name(BValue) -> Bytes?
+
+pub fn metainfo_piece_length(BValue) -> Int64?
+
+pub fn metainfo_profile(BValue) -> BValueProfile
+
+pub fn metainfo_size(BValue) -> Int
+
+pub fn mismatching_piece_count(Array[PieceCheck]) -> Int
+
+pub fn normalize_file_length(Int64) -> Int64
+
+pub fn normalize_piece_size(Int) -> Int
+
+pub fn parse_command(Bytes) -> TorrentCommand
+
+pub fn path_is_relative(Array[Bytes]) -> Bool
+
+pub fn piece_blob_length(Int) -> Int
+
+pub fn piece_hash(TorrentMeta, Int) -> Bytes?
+
+pub fn piece_hash_count(TorrentMeta) -> Int
+
+pub fn piece_hash_index(Bytes, Bytes) -> Int?
+
+pub fn piece_hashes(Bytes) -> Array[Bytes]
+
+pub fn piece_length_is_standard(Int) -> Bool
+
+pub fn profile(BValue) -> BValueProfile
+
+pub fn remove_tracker(BValue, Bytes) -> BValue
+
+pub fn rename_torrent(BValue, Bytes) -> BValue raise TorrentError
+
+pub fn safe_file(TorrentFile) -> Bool
+
+pub fn safe_layout(TorrentLayout) -> Bool
+
+pub fn safe_path(Array[Bytes]) -> Bool
+
+pub fn safe_percentage(Int64, Int64) -> Int
+
+pub fn security_report(TorrentLayout, Int64) -> TorrentSecurityReport
+
+pub fn set_private(BValue, Bool) -> BValue raise TorrentError
+
 pub fn sha1(Bytes) -> Bytes
+
+pub fn total_checked_bytes(Array[PieceCheck]) -> Int64
+
+pub fn tracker_is_http(Bytes) -> Bool
+
+pub fn tracker_is_supported(Bytes) -> Bool
+
+pub fn tracker_is_udp(Bytes) -> Bool
+
+pub fn tracker_list_supported(Array[Bytes]) -> Bool
+
+pub fn tracker_scheme(Bytes) -> Bytes
+
+pub fn valid_file_list(Array[TorrentFile]) -> Bool
+
+pub fn valid_name(Bytes) -> Bool
+
+pub fn valid_piece_blob(Bytes, Int64, Int) -> Bool
+
+pub fn valid_torrent(BValue) -> Bool raise TorrentError
+
+pub fn valid_torrent_with_policy(BValue, TorrentPolicy) -> Bool raise TorrentError
+
+pub fn valid_tracker_list(Array[Bytes]) -> Bool
+
+pub fn validation_depth(TorrentMeta) -> Int raise TorrentError
+
+pub fn validation_directory_count(TorrentMeta) -> Int raise TorrentError
+
+pub fn validation_file_count(TorrentMeta) -> Int
+
+pub fn validation_has_canonical_info(TorrentMeta) -> Bool
+
+pub fn validation_has_real_payload(TorrentMeta) -> Bool
+
+pub fn validation_has_tracker(TorrentMeta) -> Bool
+
+pub fn validation_hash_length(TorrentMeta) -> Int
+
+pub fn validation_is_private(TorrentMeta) -> Bool
+
+pub fn validation_is_production_ready(TorrentMeta) -> Bool raise TorrentError
+
+pub fn validation_is_reproducible(TorrentMeta) -> Bool
+
+pub fn validation_is_small(TorrentMeta) -> Bool
+
+pub fn validation_matches_piece_count(TorrentMeta) -> Bool
+
+pub fn validation_piece_length(TorrentMeta) -> Int
+
+pub fn validation_score(TorrentMeta) -> Int raise TorrentError
+
+pub fn validation_summary(BValue) -> Bytes raise TorrentError
+
+pub fn validation_total_length(TorrentMeta) -> Int64
+
+pub fn verify_all_pieces(TorrentMeta, Array[Bytes]) -> Array[PieceCheck] raise TorrentError
+
+pub fn verify_piece(TorrentMeta, Int, Bytes) -> PieceCheck raise TorrentError
 
 // Errors
 pub suberror DecodeError {
@@ -26,6 +286,12 @@ pub suberror JsonConversionError {
   UnsupportedJsonNull
 } derive(Eq, @debug.Debug)
 pub impl Show for JsonConversionError
+
+pub suberror TorrentError {
+  InvalidMetadata(String)
+  MissingField(Bytes)
+  InvalidPath(Bytes)
+} derive(Eq, @debug.Debug)
 
 // Types and methods
 pub(all) enum BValue {
@@ -40,6 +306,36 @@ pub fn BValue::info_hash(Self) -> Bytes?
 pub fn BValue::to_json(Self) -> Json
 pub impl Show for BValue
 
+pub(all) struct BValueProfile {
+  mut integers : Int
+  mut strings : Int
+  mut lists : Int
+  mut dictionaries : Int
+  mut total_bytes : Int64
+  mut max_depth : Int
+  mut keys : Int
+  mut leaves : Int
+  mut empty_values : Int
+} derive(Eq, @debug.Debug)
+pub fn BValueProfile::complexity(Self) -> Bytes
+pub fn BValueProfile::container_count(Self) -> Int
+pub fn BValueProfile::dictionary_ratio(Self) -> Int
+pub fn BValueProfile::empty() -> Self
+pub fn BValueProfile::empty_ratio(Self) -> Int
+pub fn BValueProfile::has_dictionaries(Self) -> Bool
+pub fn BValueProfile::has_lists(Self) -> Bool
+pub fn BValueProfile::integer_ratio(Self) -> Int
+pub fn BValueProfile::is_binary_heavy(Self, Int64) -> Bool
+pub fn BValueProfile::is_deep(Self, Int) -> Bool
+pub fn BValueProfile::is_metadata_like(Self) -> Bool
+pub fn BValueProfile::is_scalar(Self) -> Bool
+pub fn BValueProfile::leaf_count(Self) -> Int
+pub fn BValueProfile::merge(Self, Self) -> Self
+pub fn BValueProfile::payload_density(Self) -> Int
+pub fn BValueProfile::same_shape(Self, Self) -> Bool
+pub fn BValueProfile::string_ratio(Self) -> Int
+pub fn BValueProfile::value_count(Self) -> Int
+
 pub(all) enum BValueView {
   BInt(Int64)
   BStr(BytesView)
@@ -51,6 +347,424 @@ pub fn BValueView::info_hash(Self) -> Bytes?
 pub fn BValueView::to_bvalue(Self) -> BValue
 pub fn BValueView::to_json(Self) -> Json
 pub impl Show for BValueView
+
+pub(all) struct BValueWalker {
+  value : BValue
+} derive(@debug.Debug)
+pub fn BValueWalker::byte_length(Self) -> Int64
+pub fn BValueWalker::canonical(Self) -> BValue
+pub fn BValueWalker::canonical_size(Self) -> Int
+pub fn BValueWalker::contains_bytes(Self, Bytes) -> Bool
+pub fn BValueWalker::contains_key(Self, Bytes) -> Bool
+pub fn BValueWalker::depth(Self) -> Int
+pub fn BValueWalker::dictionary_count(Self) -> Int
+pub fn BValueWalker::empty_container_count(Self) -> Int
+pub fn BValueWalker::encoded_size(Self) -> Int
+pub fn BValueWalker::integer_count(Self) -> Int
+pub fn BValueWalker::is_flat(Self) -> Bool
+pub fn BValueWalker::is_metadata(Self) -> Bool
+pub fn BValueWalker::key_count(Self) -> Int
+pub fn BValueWalker::list_count(Self) -> Int
+pub fn BValueWalker::max_string_length(Self) -> Int
+pub fn BValueWalker::new(BValue) -> Self
+pub fn BValueWalker::round_trip(Self) -> BValue raise DecodeError
+pub fn BValueWalker::string_count(Self) -> Int
+pub fn BValueWalker::value(Self) -> BValue
+
+pub(all) struct DecodeLimits {
+  max_depth : Int
+  max_string_length : Int
+  max_container_length : Int
+  max_total_bytes : Int
+} derive(Eq, @debug.Debug)
+pub fn DecodeLimits::allows_container(Self, Int) -> Bool
+pub fn DecodeLimits::allows_depth(Self, Int) -> Bool
+pub fn DecodeLimits::allows_string(Self, Int) -> Bool
+pub fn DecodeLimits::allows_total(Self, Int) -> Bool
+pub fn DecodeLimits::default() -> Self
+pub fn DecodeLimits::is_stricter_than(Self, Self) -> Bool
+pub fn DecodeLimits::is_unbounded(Self) -> Bool
+pub fn DecodeLimits::maximum(Self, Self) -> Self
+pub fn DecodeLimits::minimum(Self, Self) -> Self
+pub fn DecodeLimits::small() -> Self
+pub fn DecodeLimits::with_container_limit(Self, Int) -> Self
+pub fn DecodeLimits::with_depth(Self, Int) -> Self
+pub fn DecodeLimits::with_string_limit(Self, Int) -> Self
+pub fn DecodeLimits::with_total_limit(Self, Int) -> Self
+
+pub(all) struct DownloadPlan {
+  piece_size : Int
+  piece_count : Int
+  total_length : Int64
+  file_count : Int
+  spans : Int
+} derive(Eq, @debug.Debug)
+pub fn DownloadPlan::average_piece_length(Self) -> Int64
+pub fn DownloadPlan::completed_ratio(Self, Int) -> Int
+pub fn DownloadPlan::contains_offset(Self, Int64) -> Bool
+pub fn DownloadPlan::estimated_requests(Self, Int) -> Int
+pub fn DownloadPlan::file_count(Self) -> Int
+pub fn DownloadPlan::fragmentation_ratio(Self) -> Int
+pub fn DownloadPlan::from_layout(TorrentLayout) -> Self
+pub fn DownloadPlan::is_empty(Self) -> Bool
+pub fn DownloadPlan::is_fragmented(Self) -> Bool
+pub fn DownloadPlan::last_piece_length(Self) -> Int
+pub fn DownloadPlan::next_piece(Self, Int) -> Int?
+pub fn DownloadPlan::offset_for_piece(Self, Int) -> Int64?
+pub fn DownloadPlan::piece_class(Self) -> Bytes
+pub fn DownloadPlan::piece_count(Self) -> Int
+pub fn DownloadPlan::piece_for_offset(Self, Int64) -> Int?
+pub fn DownloadPlan::piece_size(Self) -> Int
+pub fn DownloadPlan::remaining_after_piece(Self, Int) -> Int64
+pub fn DownloadPlan::same_geometry(Self, Self) -> Bool
+pub fn DownloadPlan::size_class(Self) -> Bytes
+pub fn DownloadPlan::span_count(Self) -> Int
+pub fn DownloadPlan::total_bytes(Self) -> Int64
+pub fn DownloadPlan::valid_progress(Self, Int) -> Bool
+
+pub(all) struct MagnetLink {
+  info_hash : Bytes
+  display_name : Bytes?
+  trackers : Array[Bytes]
+  exact_sources : Array[Bytes]
+  keywords : Array[Bytes]
+} derive(Eq, @debug.Debug)
+pub fn MagnetLink::from_uri(Bytes) -> Self raise TorrentError
+pub fn MagnetLink::has_name(Self) -> Bool
+pub fn MagnetLink::has_tracker(Self, Bytes) -> Bool
+pub fn MagnetLink::is_private(Self) -> Bool
+pub fn MagnetLink::keyword_count(Self) -> Int
+pub fn MagnetLink::new(Bytes) -> Self raise TorrentError
+pub fn MagnetLink::normalized(Self) -> Self
+pub fn MagnetLink::source_count(Self) -> Int
+pub fn MagnetLink::to_uri(Self) -> Bytes
+pub fn MagnetLink::tracker_count(Self) -> Int
+pub fn MagnetLink::with_keyword(Self, Bytes) -> Self
+pub fn MagnetLink::with_name(Self, Bytes) -> Self
+pub fn MagnetLink::with_source(Self, Bytes) -> Self
+pub fn MagnetLink::with_tracker(Self, Bytes) -> Self
+pub fn MagnetLink::without_keywords(Self) -> Self
+pub fn MagnetLink::without_name(Self) -> Self
+pub fn MagnetLink::without_sources(Self) -> Self
+pub fn MagnetLink::without_trackers(Self) -> Self
+
+pub(all) struct PieceCheck {
+  piece_index : Int
+  expected : Bytes
+  actual : Bytes
+  matches : Bool
+  payload_length : Int
+} derive(Eq, @debug.Debug)
+pub fn PieceCheck::actual_hash(Self) -> Bytes
+pub fn PieceCheck::expected_hash(Self) -> Bytes
+pub fn PieceCheck::index(Self) -> Int
+pub fn PieceCheck::is_empty(Self) -> Bool
+pub fn PieceCheck::ok(Self) -> Bool
+pub fn PieceCheck::payload_size(Self) -> Int
+
+pub(all) struct PieceSpan {
+  file_index : Int
+  piece_index : Int
+  file_offset : Int64
+  length : Int
+} derive(Eq, @debug.Debug)
+
+pub(all) struct TorrentAssessment {
+  accepted : Bool
+  violations : Array[String]
+  warnings : Array[String]
+  file_count : Int
+  total_length : Int64
+  piece_count : Int
+} derive(Eq, @debug.Debug)
+pub fn TorrentAssessment::first_violation(Self) -> String?
+pub fn TorrentAssessment::first_warning(Self) -> String?
+pub fn TorrentAssessment::has_warnings(Self) -> Bool
+pub fn TorrentAssessment::is_accepted(Self) -> Bool
+pub fn TorrentAssessment::is_large(Self, Int64) -> Bool
+pub fn TorrentAssessment::is_many_files(Self, Int) -> Bool
+pub fn TorrentAssessment::is_piece_heavy(Self, Int) -> Bool
+pub fn TorrentAssessment::risk_level(Self) -> Bytes
+pub fn TorrentAssessment::same_scale(Self, Self) -> Bool
+pub fn TorrentAssessment::score(Self) -> Int
+pub fn TorrentAssessment::violation_count(Self) -> Int
+pub fn TorrentAssessment::warning_count(Self) -> Int
+
+pub(all) struct TorrentBuilder {
+  name : Bytes
+  piece_length : Int
+  length : Int64?
+  files : Array[TorrentFile]?
+  pieces : Bytes?
+  trackers : Array[Bytes]
+  is_private : Bool
+} derive(@debug.Debug)
+pub fn TorrentBuilder::build(Self) -> BValue raise TorrentError
+pub fn TorrentBuilder::canonical_bytes(Self) -> Bytes raise TorrentError
+pub fn TorrentBuilder::file_count(Self) -> Int
+pub fn TorrentBuilder::has_files(Self) -> Bool
+pub fn TorrentBuilder::has_length(Self) -> Bool
+pub fn TorrentBuilder::has_pieces(Self) -> Bool
+pub fn TorrentBuilder::info_hash(Self) -> Bytes raise TorrentError
+pub fn TorrentBuilder::is_private(Self) -> Bool
+pub fn TorrentBuilder::new(Bytes, Int) -> Self
+pub fn TorrentBuilder::set_private(Self) -> Self
+pub fn TorrentBuilder::set_public(Self) -> Self
+pub fn TorrentBuilder::tracker_count(Self) -> Int
+pub fn TorrentBuilder::validate(Self) -> TorrentMeta raise TorrentError
+pub fn TorrentBuilder::with_files(Self, Array[TorrentFile]) -> Self
+pub fn TorrentBuilder::with_length(Self, Int64) -> Self
+pub fn TorrentBuilder::with_pieces(Self, Bytes) -> Self
+pub fn TorrentBuilder::with_tracker(Self, Bytes) -> Self
+
+pub(all) struct TorrentCatalog {
+  entries : Array[TorrentCatalogEntry]
+} derive(Eq, @debug.Debug)
+pub fn TorrentCatalog::add(Self, TorrentMeta) -> Self
+pub fn TorrentCatalog::add_value(Self, BValue) -> Self raise TorrentError
+pub fn TorrentCatalog::average_size(Self) -> Int64
+pub fn TorrentCatalog::contains_hash(Self, Bytes) -> Bool
+pub fn TorrentCatalog::find_hash(Self, Bytes) -> TorrentCatalogEntry?
+pub fn TorrentCatalog::find_name(Self, Bytes) -> Array[TorrentCatalogEntry]
+pub fn TorrentCatalog::is_empty(Self) -> Bool
+pub fn TorrentCatalog::largest(Self) -> TorrentCatalogEntry?
+pub fn TorrentCatalog::merge(Self, Self) -> Self
+pub fn TorrentCatalog::new() -> Self
+pub fn TorrentCatalog::piece_total(Self) -> Int
+pub fn TorrentCatalog::private_count(Self) -> Int
+pub fn TorrentCatalog::remove_hash(Self, Bytes) -> Self
+pub fn TorrentCatalog::size(Self) -> Int
+pub fn TorrentCatalog::smallest(Self) -> TorrentCatalogEntry?
+pub fn TorrentCatalog::sorted_by_name(Self) -> Array[TorrentCatalogEntry]
+pub fn TorrentCatalog::sorted_by_size(Self) -> Array[TorrentCatalogEntry]
+pub fn TorrentCatalog::total_bytes(Self) -> Int64
+pub fn TorrentCatalog::total_files(Self) -> Int
+
+pub(all) struct TorrentCatalogEntry {
+  name : Bytes
+  info_hash : Bytes
+  total_length : Int64
+  file_count : Int
+  piece_count : Int
+  is_private : Bool
+} derive(Eq, @debug.Debug)
+pub fn TorrentCatalogEntry::is_large(Self, Int64) -> Bool
+pub fn TorrentCatalogEntry::same_content(Self, Self) -> Bool
+pub fn TorrentCatalogEntry::scale(Self) -> Bytes
+
+pub(all) enum TorrentCommand {
+  Inspect
+  Validate
+  Files
+  Pieces
+  Magnet
+  Profile
+  Help
+} derive(Eq, @debug.Debug)
+
+pub(all) struct TorrentFile {
+  path : Array[Bytes]
+  length : Int64
+} derive(Eq, @debug.Debug)
+pub fn TorrentFile::component(Self, Int) -> Bytes?
+pub fn TorrentFile::depth(Self) -> Int
+pub fn TorrentFile::is_empty(Self) -> Bool
+pub fn TorrentFile::leaf(Self) -> Bytes
+
+pub(all) struct TorrentLayout {
+  files : Array[TorrentFile]
+  piece_size : Int
+  total_length : Int64
+} derive(Eq, @debug.Debug)
+pub fn TorrentLayout::average_file_length(Self) -> Int64
+pub fn TorrentLayout::contains(Self, Array[Bytes]) -> Bool
+pub fn TorrentLayout::count_extension(Self, Bytes) -> Int
+pub fn TorrentLayout::count_under(Self, Array[Bytes]) -> Int
+pub fn TorrentLayout::directory_count(Self) -> Int
+pub fn TorrentLayout::empty_file_count(Self) -> Int
+pub fn TorrentLayout::file_count(Self) -> Int
+pub fn TorrentLayout::file_end(Self, Int) -> Int64
+pub fn TorrentLayout::file_index_at(Self, Int64) -> Int?
+pub fn TorrentLayout::file_start(Self, Int) -> Int64
+pub fn TorrentLayout::files(Self) -> Array[TorrentFile]
+pub fn TorrentLayout::files_under(Self, Array[Bytes]) -> Array[TorrentFile]
+pub fn TorrentLayout::find(Self, Array[Bytes]) -> TorrentFile?
+pub fn TorrentLayout::is_multi_file(Self) -> Bool
+pub fn TorrentLayout::is_piece_aligned(Self, Int) -> Bool
+pub fn TorrentLayout::is_single_file(Self) -> Bool
+pub fn TorrentLayout::largest_file(Self) -> TorrentFile?
+pub fn TorrentLayout::max_depth(Self) -> Int
+pub fn TorrentLayout::min_depth(Self) -> Int
+pub fn TorrentLayout::new(Array[TorrentFile], Int) -> Self raise TorrentError
+pub fn TorrentLayout::piece_count(Self) -> Int
+pub fn TorrentLayout::piece_end(Self, Int) -> Int64
+pub fn TorrentLayout::piece_length(Self, Int) -> Int
+pub fn TorrentLayout::piece_size(Self) -> Int
+pub fn TorrentLayout::piece_start(Self, Int) -> Int64
+pub fn TorrentLayout::piece_utilization(Self, Int) -> Int
+pub fn TorrentLayout::pieces_for_file(Self, Int) -> Array[Int]
+pub fn TorrentLayout::smallest_file(Self) -> TorrentFile?
+pub fn TorrentLayout::spans_for_piece(Self, Int) -> Array[PieceSpan]
+pub fn TorrentLayout::total_components(Self) -> Int
+pub fn TorrentLayout::total_piece_spans(Self) -> Int
+pub fn TorrentLayout::validate_unique_paths(Self) -> Unit raise TorrentError
+
+pub(all) struct TorrentMeta {
+  name : Bytes
+  piece_length : Int
+  pieces : Bytes
+  files : Array[TorrentFile]
+  total_length : Int64
+  announce : Array[Bytes]
+  is_private : Bool
+  info : BValue
+  info_hash : Bytes
+} derive(Eq, @debug.Debug)
+pub fn TorrentMeta::file_named(Self, Bytes) -> TorrentFile?
+pub fn TorrentMeta::from_bvalue(BValue) -> Self raise TorrentError
+pub fn TorrentMeta::has_tracker(Self, Bytes) -> Bool
+pub fn TorrentMeta::piece_count(Self) -> Int
+
+pub(all) struct TorrentMetrics {
+  file_count : Int
+  total_length : Int64
+  piece_count : Int
+  zero_length_files : Int
+  max_depth : Int
+  directory_count : Int
+  extension_counts : Array[(Bytes, Int)]
+  depth_counts : Array[(Int, Int)]
+} derive(Eq, @debug.Debug)
+pub fn TorrentMetrics::average_file_size(Self) -> Int64
+pub fn TorrentMetrics::average_piece_size(Self) -> Int64
+pub fn TorrentMetrics::complexity(Self) -> Bytes
+pub fn TorrentMetrics::depth_count(Self, Int) -> Int
+pub fn TorrentMetrics::depth_kinds(Self) -> Int
+pub fn TorrentMetrics::empty_ratio(Self) -> Int
+pub fn TorrentMetrics::extension_count(Self, Bytes) -> Int
+pub fn TorrentMetrics::extension_kinds(Self) -> Int
+pub fn TorrentMetrics::from_meta(TorrentMeta) -> Self raise TorrentError
+pub fn TorrentMetrics::has_extension(Self, Bytes) -> Bool
+pub fn TorrentMetrics::is_balanced(Self) -> Bool
+pub fn TorrentMetrics::largest_extension_count(Self) -> Int
+pub fn TorrentMetrics::merge(Self, Self) -> Self
+pub fn TorrentMetrics::most_common_extension(Self) -> Bytes?
+pub fn TorrentMetrics::nested_ratio(Self) -> Int
+pub fn TorrentMetrics::same_shape(Self, Self) -> Bool
+pub fn TorrentMetrics::scale(Self) -> Bytes
+
+pub(all) struct TorrentPolicy {
+  max_files : Int
+  max_total_length : Int64
+  max_path_depth : Int
+  max_piece_length : Int
+  min_piece_length : Int
+  require_tracker : Bool
+  allow_private : Bool
+  allow_empty_files : Bool
+} derive(Eq, @debug.Debug)
+pub fn TorrentPolicy::accepts(Self, TorrentMeta) -> Bool raise TorrentError
+pub fn TorrentPolicy::assess(Self, TorrentMeta) -> TorrentAssessment raise TorrentError
+pub fn TorrentPolicy::default() -> Self
+pub fn TorrentPolicy::requiring_tracker(Self) -> Self
+pub fn TorrentPolicy::strict() -> Self
+pub fn TorrentPolicy::with_max_depth(Self, Int) -> Self
+pub fn TorrentPolicy::with_max_files(Self, Int) -> Self
+pub fn TorrentPolicy::with_max_total_length(Self, Int64) -> Self
+pub fn TorrentPolicy::with_piece_range(Self, Int, Int) -> Self
+pub fn TorrentPolicy::without_empty_files(Self) -> Self
+pub fn TorrentPolicy::without_private(Self) -> Self
+
+pub(all) struct TorrentQuery {
+  meta : TorrentMeta
+  layout : TorrentLayout
+} derive(@debug.Debug)
+pub fn TorrentQuery::average_file_size(Self) -> Int64
+pub fn TorrentQuery::depth(Self) -> Int
+pub fn TorrentQuery::directory_count(Self) -> Int
+pub fn TorrentQuery::directory_files(Self, Array[Bytes]) -> Array[TorrentFile]
+pub fn TorrentQuery::directory_size(Self, Array[Bytes]) -> Int64
+pub fn TorrentQuery::empty_files(Self) -> Array[TorrentFile]
+pub fn TorrentQuery::extension_count(Self, Bytes) -> Int
+pub fn TorrentQuery::file(Self, Int) -> TorrentFile?
+pub fn TorrentQuery::file_count(Self) -> Int
+pub fn TorrentQuery::files(Self) -> Array[TorrentFile]
+pub fn TorrentQuery::files_in_piece(Self, Int) -> Array[TorrentFile]
+pub fn TorrentQuery::files_named(Self, Bytes) -> Array[TorrentFile]
+pub fn TorrentQuery::files_under(Self, Array[Bytes]) -> Array[TorrentFile]
+pub fn TorrentQuery::files_with_extension(Self, Bytes) -> Array[TorrentFile]
+pub fn TorrentQuery::files_with_length_at_least(Self, Int64) -> Array[TorrentFile]
+pub fn TorrentQuery::files_with_length_at_most(Self, Int64) -> Array[TorrentFile]
+pub fn TorrentQuery::has_tracker(Self, Bytes) -> Bool
+pub fn TorrentQuery::is_piece_aligned(Self, Int) -> Bool
+pub fn TorrentQuery::largest(Self) -> TorrentFile?
+pub fn TorrentQuery::layout(Self) -> TorrentLayout
+pub fn TorrentQuery::leaf_names(Self) -> Array[Bytes]
+pub fn TorrentQuery::meta(Self) -> TorrentMeta
+pub fn TorrentQuery::multi_file(Self) -> Bool
+pub fn TorrentQuery::new(TorrentMeta) -> Self raise TorrentError
+pub fn TorrentQuery::path_components(Self) -> Int
+pub fn TorrentQuery::path_exists(Self, Array[Bytes]) -> Bool
+pub fn TorrentQuery::path_size(Self, Array[Bytes]) -> Int64?
+pub fn TorrentQuery::piece_count(Self) -> Int
+pub fn TorrentQuery::piece_for_offset(Self, Int64) -> Int?
+pub fn TorrentQuery::piece_spans(Self, Int) -> Array[PieceSpan]
+pub fn TorrentQuery::piece_utilization(Self, Int) -> Int
+pub fn TorrentQuery::pieces_in_range(Self, Int64, Int64) -> Array[Int]
+pub fn TorrentQuery::pieces_touching_file(Self, Int) -> Array[Int]
+pub fn TorrentQuery::private(Self) -> Bool
+pub fn TorrentQuery::single_file(Self) -> Bool
+pub fn TorrentQuery::smallest(Self) -> TorrentFile?
+pub fn TorrentQuery::total_piece_spans(Self) -> Int
+pub fn TorrentQuery::total_size(Self) -> Int64
+pub fn TorrentQuery::tracker_count(Self) -> Int
+pub fn TorrentQuery::trackers(Self) -> Array[Bytes]
+pub fn TorrentQuery::zero_length_count(Self) -> Int
+
+pub(all) struct TorrentReport {
+  name : Bytes
+  file_count : Int
+  total_length : Int64
+  piece_length : Int
+  piece_count : Int
+  tracker_count : Int
+  is_private : Bool
+  is_multi_file : Bool
+  max_depth : Int
+  directory_count : Int
+  info_hash : Bytes
+} derive(Eq, @debug.Debug)
+pub fn TorrentReport::average_piece_payload(Self) -> Int64
+pub fn TorrentReport::file_density(Self) -> Int
+pub fn TorrentReport::from_meta(TorrentMeta) -> Self raise TorrentError
+pub fn TorrentReport::has_nested_paths(Self) -> Bool
+pub fn TorrentReport::has_trackers(Self) -> Bool
+pub fn TorrentReport::hash_is_sha1(Self) -> Bool
+pub fn TorrentReport::is_empty(Self) -> Bool
+pub fn TorrentReport::layout_kind(Self) -> Bytes
+pub fn TorrentReport::piece_density(Self) -> Int
+pub fn TorrentReport::piece_span_count(Self, TorrentLayout) -> Int
+pub fn TorrentReport::same_content(Self, Self) -> Bool
+pub fn TorrentReport::uses_large_pieces(Self) -> Bool
+pub fn TorrentReport::uses_small_pieces(Self) -> Bool
+
+pub(all) struct TorrentSecurityReport {
+  safe : Bool
+  path_issues : Int
+  duplicate_paths : Int
+  oversized_files : Int
+  suspicious_names : Int
+  total_length : Int64
+} derive(Eq, @debug.Debug)
+pub fn TorrentSecurityReport::has_duplicates(Self) -> Bool
+pub fn TorrentSecurityReport::has_oversized_files(Self) -> Bool
+pub fn TorrentSecurityReport::has_path_issue(Self) -> Bool
+pub fn TorrentSecurityReport::has_suspicious_names(Self) -> Bool
+pub fn TorrentSecurityReport::is_safe(Self) -> Bool
+pub fn TorrentSecurityReport::issue_count(Self) -> Int
+pub fn TorrentSecurityReport::risk(Self) -> Bytes
+pub fn TorrentSecurityReport::same_safety(Self, Self) -> Bool
+pub fn TorrentSecurityReport::size_ratio(Self, Int64) -> Int
 
 // Type aliases
 
