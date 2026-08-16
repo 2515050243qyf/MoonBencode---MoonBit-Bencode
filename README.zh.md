@@ -160,3 +160,12 @@ moon coverage report -f summary
 ## 开源协议
 
 Apache-2.0
+
+## 仓库与来源说明
+
+- GitHub：https://github.com/2515050243qyf/MoonBencode---MoonBit-Bencode
+- GitLink：https://gitlink.org.cn/qyf795201/moon-bencode
+
+本项目是原创 MoonBit Bencode 与 BitTorrent 种子元信息实现，遵循公开的
+BitTorrent 元信息约定，不复制上游库的实现代码。测试使用精简、可复现的元
+数据 fixture，不重新分发种子 payload 或构建产物。

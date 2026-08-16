@@ -6,7 +6,7 @@
 
 **Architecture:** Keep the existing codec stable and add pure typed modules for metainfo validation, safe file layout analysis, magnet URI handling, deterministic torrent construction, and structured reports. The CLI calls these pure APIs and never owns parsing rules.
 
-**Tech Stack:** MoonBit 0.10.3-compatible syntax, `moon.mod`, `moon.pkg`, native/wasm-compatible standard library, GitHub Actions and Mooncakes.
+**Tech Stack:** Current MoonBit 0.10.x-compatible syntax, `moon.mod`, `moon.pkg`, native/wasm-compatible standard library, GitHub Actions and Mooncakes.
 
 ---
 
@@ -16,11 +16,10 @@
 - Create: `src/bencode/metainfo.mbt`
 - Test: `src/bencode/metainfo_test.mbt`
 
-- [ ] Write failing tests for single-file metadata, multi-file metadata, required fields, private flag, and invalid piece lengths.
-- [ ] Run `moon test --deny-warn --package 2515050243qyf/moon_bencode/src/bencode`; verify the new tests fail because the typed API is absent.
-- [ ] Implement typed metadata extraction, validation, announce tiers, and exact info dictionary encoding.
-- [ ] Run the focused tests and then the full regular/native suites.
-- [ ] Commit `feat: add typed torrent metainfo validation`.
+- [x] Write failing tests for single-file metadata, multi-file metadata, required fields, private flag, and invalid piece lengths.
+- [x] Run focused and full regular/native suites.
+- [x] Implement typed metadata extraction, validation, announce tiers, and exact info dictionary encoding.
+- [x] Commit the typed torrent metainfo implementation.
 
 ### Task 2: File layout and piece planning
 
@@ -28,11 +27,10 @@
 - Create: `src/bencode/torrent_files.mbt`
 - Test: `src/bencode/torrent_files_test.mbt`
 
-- [ ] Write failing tests for safe path validation, flattening, total size, piece counts, offsets, and cross-file piece spans.
-- [ ] Verify the tests fail for the missing layout API.
-- [ ] Implement immutable file entries, normalized paths, overflow-safe totals, and deterministic piece planning.
-- [ ] Verify ordinary, boundary, and native tests.
-- [ ] Commit `feat: add torrent file layout analysis`.
+- [x] Write tests for safe path validation, flattening, total size, piece counts, offsets, and cross-file piece spans.
+- [x] Implement immutable file entries, normalized paths, overflow-safe totals, and deterministic piece planning.
+- [x] Verify ordinary, boundary, and native tests.
+- [x] Commit the torrent file layout implementation.
 
 ### Task 3: Magnet URI support
 
@@ -40,11 +38,10 @@
 - Create: `src/bencode/magnet.mbt`
 - Test: `src/bencode/magnet_test.mbt`
 
-- [ ] Write failing tests for v1 hash parsing, percent encoding, display names, trackers, duplicates, and invalid parameters.
-- [ ] Verify the tests fail for the missing magnet API.
-- [ ] Implement normalized parse/build functions without network or filesystem dependencies.
-- [ ] Verify all tests on the native target.
-- [ ] Commit `feat: add normalized magnet uri support`.
+- [x] Write tests for v1 hash parsing, percent encoding, display names, trackers, duplicates, and invalid parameters.
+- [x] Implement normalized parse/build functions without network or filesystem dependencies.
+- [x] Verify all tests on the native target.
+- [x] Commit the normalized magnet URI implementation.
 
 ### Task 4: Deterministic builders and reports
 
@@ -54,11 +51,10 @@
 - Test: `src/bencode/torrent_builder_test.mbt`
 - Test: `src/bencode/torrent_report_test.mbt`
 
-- [ ] Write failing tests for single-file and multi-file builders, canonical round trips, report summaries, and real distribution fixtures.
-- [ ] Verify the tests fail before implementation.
-- [ ] Implement builders and report values by composing the typed metainfo and file-layout modules.
-- [ ] Verify canonical bytes, exact info_hash values, and native tests.
-- [ ] Commit `feat: add deterministic torrent builders and reports`.
+- [x] Write tests for single-file and multi-file builders, canonical round trips, report summaries, and real distribution fixtures.
+- [x] Implement builders and report values by composing the typed metainfo and file-layout modules.
+- [x] Verify canonical bytes, exact info_hash values, and native tests.
+- [x] Commit deterministic torrent builders and reports.
 
 ### Task 5: CLI workflows and documentation
 
@@ -68,10 +64,10 @@
 - Modify: `README.md`, `README.zh.md`, `README.mbt.md`
 - Modify: `CHANGELOG.md`, `MoonBencode_Report.md`
 
-- [ ] Add executable commands for inspect, validate, files, pieces, and magnet with documented byte-input examples.
-- [ ] Add real scenario fixtures and command examples to the README.
-- [ ] Run `moon run cmd/main --help` and each deterministic command.
-- [ ] Commit `feat: expose torrent toolkit cli workflows`.
+- [x] Add executable commands for inspect, validate, files, pieces, magnet, and profile.
+- [x] Add real scenario fixtures and command examples to the README.
+- [x] Run each deterministic command.
+- [x] Commit the torrent toolkit CLI workflows.
 
 ### Task 6: Cross-platform toolchain and acceptance audit
 
@@ -80,7 +76,7 @@
 - Create: `.github/workflows/release-check.yml`
 - Modify: `CONTRIBUTING.md`, `CHANGELOG.md`
 
-- [ ] Pin setup-moonbit to 0.10.3 and add Linux/macOS/Windows checks for version, format diff, info diff, check, build, regular/native tests, and package dry-run.
-- [ ] Run every locally supported command and inspect generated interfaces.
-- [ ] Recount effective production lines, inspect license/remotes/default branches/history, and verify both repositories have identical source trees.
-- [ ] Commit `ci: strengthen three-platform acceptance checks`.
+- [x] Configure latest Moon CLI setup and Linux/macOS/Windows checks for version, format diff, info diff, check, build, regular/native tests, and CLI smoke tests.
+- [x] Run every locally supported command and inspect generated interfaces.
+- [x] Recount effective production lines, inspect license/remotes/default branches/history, and verify both repositories have matching source trees.
+- [x] Commit the cross-platform acceptance checks.

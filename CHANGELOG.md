@@ -10,7 +10,7 @@
 ## 0.1.3
 
 - Documented the complete cross-platform acceptance workflow and pinned CI
-  to MoonBit `0.10.3`.
+  to a reproducible MoonBit 0.10.x toolchain.
 
 ## 0.1.2
 

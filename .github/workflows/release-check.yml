@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup MoonBit 0.10.3
+      - name: Setup latest MoonBit CLI
         uses: hustcer/setup-moonbit@v1
         with:
           version: "latest"

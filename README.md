@@ -169,3 +169,14 @@ moon coverage report -f summary
 ## License
 
 Apache-2.0
+
+## Repositories and provenance
+
+- GitHub: https://github.com/2515050243qyf/MoonBencode---MoonBit-Bencode
+- GitLink: https://gitlink.org.cn/qyf795201/moon-bencode
+
+This is an original MoonBit implementation of the Bencode and BitTorrent
+metainfo APIs. It follows the public BitTorrent metainfo conventions and does
+not copy implementation code from an upstream library. Tests use compact,
+reproducible metadata fixtures; no torrent payloads or generated build outputs
+are redistributed.
