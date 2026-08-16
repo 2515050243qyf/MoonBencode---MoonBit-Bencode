@@ -13,7 +13,7 @@ jobs:
       - name: Setup MoonBit 0.10.3
         uses: hustcer/setup-moonbit@v1
         with:
-          version: "0.10.7"
+          version: "0.1.20260807"
       - name: Verify package
         run: |
           moon version --all
